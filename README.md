@@ -1,5 +1,5 @@
 # Rook
-CLI based temporary email generator.
+CLI based temporary email generator. This utilizes the [1secmail api](https://www.1secmail.com/api/) for the mail system.
 
 # Building
 To build it yourself, clone the repository to a local directory. Rook uses [pkg](https://github.com/vercel/pkg) to distribute executables, 
