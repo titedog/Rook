@@ -1,6 +1,6 @@
 {
   "name": "rook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI based temporary email generator.",
   "main": "index.js",
   "scripts": {

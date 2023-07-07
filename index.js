@@ -38,14 +38,14 @@ var commands = {
 	},
 	"clr": {
 		"args": null,
-		"callback": (args) => {
+		"callback": (_args) => {
 			console.clear();
 			input();
 		}
 	},
 	"get-domains": {
 		"args": null,
-		"callback": (args) => {
+		"callback": (_args) => {
 			const spinner = ora('Requesting domains...');
 			spinner.color = 'magenta';
 			spinner.start();
@@ -79,7 +79,7 @@ var commands = {
 	},
 	"get-emails": {
 		"args": null,
-		"callback": (args) => {
+		"callback": (_args) => {
 			if(currentEmail == null) {
 				console.log(chalk.redBright("No email currently mounted."));
 				input();
@@ -100,6 +100,7 @@ var commands = {
 						input();
 					}).catch(error => {
 						console.log(chalk.redBright(toString(error)));
+						
 						input();
 					});
 				} catch(exception) {
@@ -132,12 +133,28 @@ var commands = {
 
 						input();
 					}).catch(error => {
+						spinner.stop();
 						console.log(chalk.redBright(toString(error)));
 						input();
 					});
 				} catch(exception) {
+					spinner.stop();
 					console.log(chalk.redBright(toString(exception)));
 				}
+			}
+		}
+	},
+	"unmount": {
+		"args": null,
+		"callback": (_args) => {
+			if(currentEmail != null) {
+				currentEmail = null;
+				console.log("Successfully unmounted the current email.");
+				input();
+			} else {
+				// No.
+				console.log(chalk.redBright("No email is mounted."));
+				input();
 			}
 		}
 	}
